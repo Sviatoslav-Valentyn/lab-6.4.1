@@ -6,25 +6,25 @@
 
 using namespace std;
 
-void Init(double* b, const int size)
+void Init(int* b, const int n)
 {
-    for (size_t i = 0; i < size; i++)
+    for (size_t i = 0; i < n; i++)
         b[i] = -2 + rand() % 5;  // (-2, 2)
 }
 
-void Print(const double* const b, const int size)
+void Print(const int* const b, const int n)
 {
     cout << "{ ";
-    for (size_t i = 0; i < size; i++)
+    for (size_t i = 0; i < n; i++)
     {
         cout << b[i] << " ";
     }
     cout << "}" << endl;
 }
 
-double Min(const double* const b, const int n)
+int Min(const int* const b, const int n)
 {
-    double min = b[0];
+    int min = b[0];
     for (int i = 0; i < n; i++)
     {
         if (b[i] < min)
@@ -35,9 +35,9 @@ double Min(const double* const b, const int n)
     return min;
 }
 
-int FirstElement(double* b, const int size)
+int FirstElement(int* b, const int n)
 {
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < n; i++)
     {
         if (b[i] > 0)
             return i;
@@ -46,10 +46,10 @@ int FirstElement(double* b, const int size)
 
 }
 
-int LastElement(double* b, const int size)
+int LastElement(int* b, const int n)
 {
     int index = -1;
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < n; i++)
     {
         if (b[i] > 0)
         {
@@ -60,17 +60,17 @@ int LastElement(double* b, const int size)
     return index;
 }
 
-double Sum(double b[], const int n)
+int Sum(int b[], const int n)
 {
-    double s = 0;
+    int s = 0;
     for (int i = 1 + FirstElement(b, n); i < LastElement(b, n); i++)
         s += b[i];
     return s;
 }
 
-int Nadx0(double* b, const int size, int start)
+int Nadx0(int* b, const int n, int start)
 {
-    for (int i = start; i < size; i++)
+    for (int i = start; i < n; i++)
     {
         if (b[i] == 0)
             return i;
@@ -78,7 +78,7 @@ int Nadx0(double* b, const int size, int start)
     return -1;
 }
 
-void Sort(double* b, const int n)
+void Sort(int* b, const int n)
 {
     for (int i = 0; i < n; i++)
     {
@@ -100,7 +100,7 @@ int main()
     int n;
     cout << "n = "; cin >> n;
 
-    double* b = new double[n];
+    int* b = new int[n];
 
     Init(b, n);
     Print(b, n);
